@@ -111,5 +111,22 @@ iconElementPlus.addEventListener("click", () => {
 };
 })
 
+const removeOnClick = document.querySelector(".fa-xl")
+
+removeOnClick.addEventListener("click", () => {
+
+  if (confirm("This will remove the game from your cart. Are you sure?")) {
+    const containerItemPrice = iconElementMinus.closest(".container-item-price");
+
+    containerItemPrice.innerHTML = `<h1 class="empty-cart-h1"> Cart is empty, get back to shopping! </h1> 
+                                    <a class="btn cart-shop" href="index.html"> Homepage </a>`
+
+    containerItemPrice.classList.add("empty-cart");
+
+};
+
+
+})
+
 
 
