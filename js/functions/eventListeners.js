@@ -1,9 +1,9 @@
     
-    // const returnBtn = document.querySelector(".back-paragraph"); 
+    const returnBtn = document.querySelector(".back-paragraph"); 
 
-    // returnBtn.addEventListener("click", function() { 
-    //     window.history.back(); 
-    // }); 
+    returnBtn.addEventListener("click", function() { 
+        window.history.back(); 
+    }); 
 
 
     // let count = 1;

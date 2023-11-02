@@ -7,7 +7,7 @@ import { randomImage } from "./functions/index.js";
 
 let data = await fetchApi(); 
 
-// render html on index page 
+// render html on  all pages
 
 
 
@@ -22,7 +22,7 @@ function displayCorrectFunction() {
         renderProductPage(data)
     } else if (url.includes("product-page")) {
         displayContent();
-    } else {
+    } else if (url.includes) {
         console.log("URL doesn't match any condition");
     }
 }
