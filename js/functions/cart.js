@@ -1,5 +1,3 @@
-import { fetchApi } from "../fetch.js";
-
 
 const queryString = document.location.search;
 
@@ -17,7 +15,6 @@ const totalContainer = document.querySelector(".total-container")
 function renderCart() { 
   cartItem.innerHTML = ""; 
   renderHtmlCart();
-
 if (!id) {
   totalContainer.innerHTML = "";  
   cartItem.innerHTML = `<h1> Cart is empty, get back to shopping! </h1> `; 
@@ -73,23 +70,30 @@ function renderHtmlCart() {
     
 }
 
-const parentContainer = document.querySelector(".container-item-price")
+// this makes the shopping cart -, + and X icons interactive, and will remove the item if clicked on when the quantity is 1
 
-// Select the existing input element by its ID
+const parentContainer = document.querySelector(".container-item-price")
 const inputElement = document.querySelector("#product-quantity");
 
-// Select the "fa-minus" and "fa-plus" elements
+
 const iconElementMinus = document.querySelector(".fa-minus");
 const iconElementPlus = document.querySelector(".fa-plus");
 
-let counter = parseInt(inputElement.value); // Parse the initial value as an integer
+let counter = parseInt(inputElement.value); 
 
 iconElementMinus.addEventListener("click", () => {
-  // Decrement the counter
   counter--;
 
-  // Update the input field's value with the new counter value, including a "-"
   inputElement.value = counter.toString();
+
+  if (counter === 0) { 
+  if (confirm("This will remove the game from your cart. Are you sure?")) { 
+    const containerItemPrice = iconElementMinus.closest(".container-item-price");
+    containerItemPrice.innerHTML = `<h1 class="empty-cart-h1"> Cart is empty, get back to shopping! </h1>  <a class="btn cart-shop" href="index.html"> Homepage </a>`
+
+    containerItemPrice.classList.add("empty-cart");
+
+}};
 });
 
 iconElementPlus.addEventListener("click", () => {
@@ -100,15 +104,7 @@ iconElementPlus.addEventListener("click", () => {
   inputElement.value = counter.toString();
 
 
-  if (confirm("This will remove the game from your cart. Are you sure?")) {
-    const containerItemPrice = iconElementMinus.closest(".container-item-price");
 
-    containerItemPrice.innerHTML = `<h1 class="empty-cart-h1"> Cart is empty, get back to shopping! </h1> 
-                                    <a class="btn cart-shop" href="index.html"> Homepage </a>`
-
-    containerItemPrice.classList.add("empty-cart");
-
-};
 })
 
 const removeOnClick = document.querySelector(".fa-xl")
@@ -124,9 +120,26 @@ removeOnClick.addEventListener("click", () => {
     containerItemPrice.classList.add("empty-cart");
 
 };
-
-
 })
 
 
+function updatePrice() { 
+  const shippingPrice = document.querySelector(".shipping-price");
+  const cartPrice = document.querySelector(".update-price");
+  const totalPriceContainer = document.querySelector(".update-total-price");
 
+  // Set the cart item price
+  cartPrice.innerHTML = `$ ${details.price}`;
+
+  // Calculate the shipping price
+  if (details.price > 50) {
+    shippingPrice.innerHTML = "Free";
+  } else {
+    shippingPrice.innerHTML = "$5"; // You may want to set an appropriate shipping price here.
+  }
+
+  // Calculate the total price and convert it to a string for display
+  const totalPrice = Math.round((details.price) + (shippingPrice.innerHTML === "Free" ? 0 : 5)); // Adjust the shipping price as needed
+  totalPriceContainer.innerHTML = `$ ${totalPrice}`;
+}
+updatePrice()

@@ -22,7 +22,7 @@ const url = "https://api.noroff.dev/api/v1/gamehub/" + id;
                                            <a href="product-page.html?id=${results[i].id}">
                                            <div class="price-grid-item8">
                                            <h4> ${results[i].title} </h4>
-                                            <p> $${results[i].price} </p>
+                                            <p class="game-price"> $${results[i].price} </p>
                                             <img src="${results[i].image}" alt="${results[i].title}" class="item8-image"> </a></div>`
 
         }} 

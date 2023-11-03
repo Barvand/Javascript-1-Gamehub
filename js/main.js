@@ -4,7 +4,6 @@ import { renderHTML } from "/js/functions/index.js";
 import { displayContent } from "./functions/product-page.js";
 import { randomImage } from "./functions/index.js";
 
-
 let data = await fetchApi(); 
 
 // render html on  all pages
@@ -22,8 +21,7 @@ function displayCorrectFunction() {
         renderProductPage(data)
     } else if (url.includes("product-page")) {
         displayContent();
-    } else if (url.includes) {
-        console.log("URL doesn't match any condition");
+    } else if (url.includes ("cart")) {
     }
 }
 

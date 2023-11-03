@@ -35,7 +35,7 @@ export async function renderProductPage(data) {
 
     
     function productOnSale(data) {  
-        const oldPrice = Math. round(data[i].discountedPrice + data[i].price);
+        const oldPrice = Math.round(data[i].discountedPrice + data[i].price);
         const oldPriceSpan = document.createElement("span");
         oldPriceSpan.classList.add("game-old-price");
         oldPriceSpan.innerText = "before $" + oldPrice;
