@@ -23,6 +23,7 @@ export async function displayContent() {
         createPrice(details)
         createCartBtn (details)
         
+        
 
 
      function createImage(details) {
@@ -67,6 +68,7 @@ export async function displayContent() {
             productContainer.appendChild(anchorBtn); 
 
         }
+
 
     }
 

@@ -152,3 +152,7 @@
 .fa-solid { 
   cursor: pointer;
 }
+
+.cart-btn {
+  text-transform: uppercase;
+}

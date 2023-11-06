@@ -12,6 +12,8 @@
         <script src="https://kit.fontawesome.com/43c9e5e89e.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/styles.css">
         <script type="module" src="/js/functions/cart.js"> </script>
+        <script type="module" src="/js/functions/eventListeners.js"> </script>
+        <script type="module" src="js/functions/utils.js"> </script>
         <script type="module" src="js/main.js"></script>
         <title> Buy your products / Cart!</title>
     </head>
@@ -63,10 +65,14 @@
 
 
 <section class="Cart-page-container">
-    <h1 id="h1-cart"> <i class="fa-solidw fa-cart-shopping"></i>  Cart </h1>
+    <div class="back"> 
+        <p class="back-paragraph"> Back </p>
+      </div>
+    <h1 id="h1-cart"> <i class="fa-solid fa-cart-shopping"></i>  Cart </h1>
     <div class="container-item-price">
     <div class="Cart-item"> 
         <div class="loader"></div> 
+</div>
 </div>
 <div class="total-container"> 
     <div class="pricing-cart"> 
@@ -85,7 +91,8 @@
     <a href="delivery.html" class="btn-checkout"> Check out </a> 
  </div> 
 </div>
-</div>
+
+
 </section>
 
 <div class="push-footer"> 

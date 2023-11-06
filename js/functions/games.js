@@ -1,7 +1,8 @@
 import { fetchApi } from "../fetch.js";
-
+import { getExistingGames } from "./utils.js";
 
 const data = await fetchApi();
+
 
 const resultsContainer = document.querySelector(".container-productpage")
 
@@ -12,9 +13,9 @@ export async function renderProductPage(data) {
      const product = data[i];
     
 
-     const elementDiv = document.createElement("a"); 
+     const elementDiv = document.createElement("div"); 
      elementDiv.classList.add("item-product-page"); 
-     elementDiv.href = "product-page.html?id=" + product.id; 
+    //  elementDiv.href = "product-page.html?id=" + product.id; 
      resultsContainer.appendChild(elementDiv);
 
      const imageElement = document.createElement("img"); 
@@ -49,7 +50,6 @@ export async function renderProductPage(data) {
         elementDiv.appendChild(elementP);
     }
 
-
     productOnSale(data)
     
     const anchorBtn = document.createElement("a")
@@ -62,9 +62,43 @@ export async function renderProductPage(data) {
     anchorBtnCart.classList.add("add-to-cart-btn");
     anchorBtnCart.href = "product-page.html?id=" + product.id; 
     anchorBtnCart.innerText = `Product page`; 
+    anchorBtnCart.setAttribute("data-id", product.id);
+    anchorBtnCart.setAttribute("data-title", product.title); 
     elementDiv.appendChild(anchorBtnCart); 
+
+    function cartBtn() { 
+        anchorBtnCart.addEventListener("click", handleClick); 
+
+    }
+    cartBtn()
+}}
+
+
+function handleClick() { 
+    const id = this.dataset.id;
+    const title = this.dataset.title; 
+  
+    const currentGames = getExistingGames(); 
+
+    const gameExists = currentGames.find(function(game) { 
+        return game.id === id; 
+    }); 
+
+if (!gameExists) { 
+    const game = {id: id, title: title}; 
+    currentGames.push(game)
+    saveGames(currentGames)
+} else { 
+    const newGames = currentGames.filter(game => game.id !== id);
+    saveGames(newGames); 
+}}
+
+
+function saveGames(games) { 
+    localStorage.setItem("games", JSON.stringify(games)); 
+
 }
-}
+
 
 
 

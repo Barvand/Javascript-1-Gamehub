@@ -13,14 +13,13 @@
 }
 
 .back {
-  width: 60%;
   margin: auto;
 }
 
 .back-paragraph {
-  font-size: 24px;
+  font-size: 18px;
   width: 100px;
-  background-color: #1e2651;
+  background-color: black;
   text-align: center;
   padding: 5px;
   color: #fea621;
@@ -42,4 +41,9 @@ body {
   color: #fea621;
   padding: 10px 50px 10px 50px;
   font-size: 20px;
+}
+
+.container-back { 
+  width: 1000px;
+  margin: auto;
 }

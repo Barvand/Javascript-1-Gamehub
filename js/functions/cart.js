@@ -1,3 +1,5 @@
+import { getExistingGames } from "./utils.js";
+
 
 const queryString = document.location.search;
 
@@ -18,14 +20,14 @@ function renderCart() {
 if (!id) {
   totalContainer.innerHTML = "";  
   cartItem.innerHTML = `<h1> Cart is empty, get back to shopping! </h1> `; 
-  
 }
+
 }
 
 renderCart()
 
 function renderHtmlCart() {
-
+  
     const cartImage = document.createElement("img");
     cartImage.classList.add("cart-image")
     cartImage.src = details.image;
@@ -67,8 +69,8 @@ function renderHtmlCart() {
     cartItem.appendChild(removeIcon)
 
 
-    
-}
+  }
+
 
 // this makes the shopping cart -, + and X icons interactive, and will remove the item if clicked on when the quantity is 1
 
@@ -122,6 +124,23 @@ removeOnClick.addEventListener("click", () => {
 };
 })
 
+const itemContainer = document.querySelector(".container-item-price")
+
+const games = getExistingGames(); 
+
+games.forEach((game) => { 
+  itemContainer.innerHTML += `<div class="Cart-item"> 
+  <img class="cart-image" src=${details.image}> 
+  <h2 class="cart-title"> ${game.title} </h2>
+  <p> ${details.price} </p> 
+  <div class="quantity>"> 
+  <i class="fa-solid fa-minus"> </i> 
+  <input id="product-quantity">
+  <i class="fa-solid fa-plus"> </i> 
+  </div> 
+  <i class="fa-solid fa-xl fa-x"
+   </div>`
+})
 
 function updatePrice() { 
   const shippingPrice = document.querySelector(".shipping-price");
@@ -142,4 +161,10 @@ function updatePrice() {
   const totalPrice = Math.round((details.price) + (shippingPrice.innerHTML === "Free" ? 0 : 5)); // Adjust the shipping price as needed
   totalPriceContainer.innerHTML = `$ ${totalPrice}`;
 }
+
+
+
+
+
+
 updatePrice()
