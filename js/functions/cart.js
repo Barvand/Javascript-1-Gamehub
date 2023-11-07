@@ -17,9 +17,10 @@ if (games.length === 0) {
 } else {
   games.forEach((game) => {
     renderHtmlCart(game);
+    
   });
 }
-
+updatePrice(); 
 
 
 function renderHtmlCart(game) {
@@ -92,6 +93,13 @@ function renderHtmlCart(game) {
     const cartItems = JSON.parse(localStorage.getItem("games")) || [];
     const updatedCart = cartItems.filter((item) => item.id !== itemId);
     localStorage.setItem("games", JSON.stringify(updatedCart));
+
+    if (updatedCart.length === 0) {
+      // The cart is empty, so you can update the page, e.g., display a message or show a "Continue Shopping" button.
+      totalContainer.innerHTML = ""; 
+      cartContainer.innerHTML = "<h1>Your cart is empty. Continue shopping</h1>";
+    }
+    
   });
 }
 
@@ -129,5 +137,5 @@ function updatePrice() {
 }
 
 
-updatePrice(); 
+
 
