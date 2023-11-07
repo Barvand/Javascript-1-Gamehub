@@ -1,4 +1,5 @@
 import { fetchApi } from "../fetch.js";
+import { handleClick } from "./games.js";
 
 
 let productContainer = document.querySelector(".gaming-container");
@@ -21,7 +22,8 @@ export async function displayContent() {
         createTitle(details)
         createDescription(details)
         createPrice(details)
-        createCartBtn (details)
+        
+        
         
         
 
@@ -59,18 +61,28 @@ export async function displayContent() {
             return elementPrice; 
         }
 
+        
+        const anchorBtn = document.createElement("a")
+         anchorBtn.classList.add("add-to-cart-btn");
+         anchorBtn.href = "cart.html"; 
+         anchorBtn.innerText = `add to cart`; 
+         anchorBtn.setAttribute("data-id", details.id);
+         anchorBtn.setAttribute("data-title", details.title);
+         anchorBtn.setAttribute("data-image", details.image);  
+         anchorBtn.setAttribute("data-price", details.price); 
+         productContainer.appendChild(anchorBtn); 
 
-        function createCartBtn (details) {
-            const anchorBtn = document.createElement("a")
-            anchorBtn.classList.add("cart-btn");
-            anchorBtn.href = "cart.html?id=" + details.id; 
-            anchorBtn.innerText = `add to cart`; 
-            productContainer.appendChild(anchorBtn); 
-
+         function cartBtn() { 
+            anchorBtn.addEventListener("click", handleClick); 
+    
         }
+        cartBtn()
+        
+
 
 
     }
+
 
 
     

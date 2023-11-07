@@ -54,29 +54,32 @@ export async function renderProductPage(data) {
     
     const anchorBtn = document.createElement("a")
     anchorBtn.classList.add("add-to-cart-btn");
-    anchorBtn.href = "product-page.html?id=" + product.id; 
+    anchorBtn.href = "cart.html"; 
     anchorBtn.innerText = `add to cart`; 
+    anchorBtn.setAttribute("data-id", product.id);
+    anchorBtn.setAttribute("data-title", product.title);
+    anchorBtn.setAttribute("data-image", product.image);  
+    anchorBtn.setAttribute("data-price", product.price); 
     elementDiv.appendChild(anchorBtn); 
-    
+
     const anchorBtnCart = document.createElement("a")
     anchorBtnCart.classList.add("add-to-cart-btn");
-    anchorBtnCart.href = "product-page.html?id=" + product.id; 
+    anchorBtnCart.href = "product-page.html?id=" + product.id;
     anchorBtnCart.innerText = `Product page`; 
-    anchorBtnCart.setAttribute("data-id", product.id);
-    anchorBtnCart.setAttribute("data-title", product.title); 
     elementDiv.appendChild(anchorBtnCart); 
 
     function cartBtn() { 
-        anchorBtnCart.addEventListener("click", handleClick); 
-
+        anchorBtn.addEventListener("click", handleClick); 
     }
     cartBtn()
 }}
 
 
-function handleClick() { 
+export function handleClick() { 
     const id = this.dataset.id;
     const title = this.dataset.title; 
+    const image = this.dataset.image;
+    const price = this.dataset.price; 
   
     const currentGames = getExistingGames(); 
 
@@ -85,7 +88,7 @@ function handleClick() {
     }); 
 
 if (!gameExists) { 
-    const game = {id: id, title: title}; 
+    const game = {id: id, title: title, image: image, price: price}; 
     currentGames.push(game)
     saveGames(currentGames)
 } else { 

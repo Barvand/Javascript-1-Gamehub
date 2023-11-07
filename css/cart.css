@@ -16,20 +16,19 @@
     background-color: rgb(247, 247, 247);
     align-items: center;
     justify-content: space-around;
+    padding-bottom: 20px;
 
   }
   
   .Cart-item h2 {
     margin-left: 20px;
+    width: 20%;
   }
   
   .Cart-item img {
     width: 120px;
     height: 150px;
   }
-  
-  
-  
   
   #btn-summary-checkout:hover {
     background-color: #5c0f0f;
@@ -129,6 +128,7 @@
 .empty-cart-h1 { 
   display: flex; 
   justify-content: center;
+  width: 100%;
 }
 
 
