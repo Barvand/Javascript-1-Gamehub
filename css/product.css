@@ -1,15 +1,25 @@
 .gaming-container {
+  display: flex;
+  flex-direction: column;
   width: 60%;
   margin: auto;
 }
 
-.gaming-container p {
-  font-size: 18px;
+.product-description {
+  font-size: 16px;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 50px;
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .product-price {
   font-weight: 600;
   margin-bottom: 50px;
+  color: red;
+  font-size: 22px;
 }
 
 .back {
@@ -32,7 +42,7 @@ body {
 
 .product-image {
   margin-top: 50px;
-  height: 700px;
+  height: 400px;
   align-self: center;
 }
 

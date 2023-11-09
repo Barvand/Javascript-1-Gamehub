@@ -55,7 +55,7 @@ export async function displayContent() {
         function createPrice(details) {
             const elementPrice = document.createElement("p");
             elementPrice.classList.add("product-price"); 
-            elementPrice.innerText = `${details.price}`; 
+            elementPrice.innerText = `$${details.price}`; 
             productContainer.appendChild(elementPrice);
             return elementPrice; 
         }
