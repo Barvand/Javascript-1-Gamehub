@@ -17,7 +17,7 @@ let data = await fetchApi();
 function displayCorrectFunction() {
     const url = window.location.href;
 
-    if (url.includes("index")) {
+    if (url.includes("")) {
         renderHTML(data);
         setInterval(() => randomImage(data), 4000)
     } else if (url.includes("games-page")) {
