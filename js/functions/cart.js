@@ -1,4 +1,3 @@
-import { data } from "./index.js";
 import { getExistingGames } from "./utils.js";
 
 

@@ -76,7 +76,7 @@
   #search {
     width: 100%;
     height: 30px;
-    background-image: url(Images/search-icon.png);
+    background-image: url(/images/search-icon.png);
     background-repeat: no-repeat;
     background-position: right center;
   }
@@ -241,13 +241,13 @@
   /* content 1 */
   .griditem-1 {
     grid-column: 1/6;
-    background-image: url(/images/GameHub_covers3.jpg);
     height: 400px;
     flex-direction: column;
     padding: 0%;
     text-align: center;
     background-size: contain; 
     background-position: top center;
+    background-color: black;
   }
   .summerdeals {
     top: 150px;
@@ -354,7 +354,7 @@
   
   .griditem-3 {
     background-image: linear-gradient(rgba(10, 4, 4, 0.5), rgba(5, 5, 5, 0.5)),
-      url(Images/gamehubclub.jpg);
+      url(/images/gamehubclub.jpg);
     background-size: 100%;
     grid-column: 3 / 6;
   }
@@ -476,7 +476,7 @@
     height: 250px;
     grid-column: 3 / 6;
     background-image: linear-gradient(rgba(34, 33, 33, 0.8), rgba(2, 2, 2, 0.8)),
-      url(Images/Computerpicture-gamehub.jpg);
+      url(/images/Computerpicture-gamehub.jpg);
     background-size: 100%;
     background-position: center;
   }
@@ -561,7 +561,7 @@
     background-size: 100%;
     text-align: center;
     background-image: linear-gradient(rgba(10, 4, 4, 0.5), rgba(5, 5, 5, 0.5)),
-      url(Images/unplash-forumimg.jpg);
+      url(/images/unplash-forumimg.jpg);
   }
   
   .forum-btn {

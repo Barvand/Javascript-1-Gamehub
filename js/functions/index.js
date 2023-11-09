@@ -22,8 +22,7 @@ export function renderHTML(results) {
                                            <div class="price-grid-item8">
                                            <h4> ${results[i].title} </h4>
                                             <p class="game-price"> $${results[i].price} </p>
-                                            <img src="${results[i].image}" alt="${results[i].title}" class="item8-image"> </a>
-                                            </div>`;
+                                            <img src="${results[i].image}" alt="${results[i].title}" class="item8-image"> </a></div>`;
   }
 }
 

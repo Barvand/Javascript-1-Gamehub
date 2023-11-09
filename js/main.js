@@ -15,6 +15,7 @@ async function displayCorrectFunction() {
 
     if (url.includes("index")) {
         renderHTML(data);
+        randomImage(data);
         setInterval(() => randomImage(data), 4000)
     } else if (url.includes("games-page")) {
         renderProductPage(data)
