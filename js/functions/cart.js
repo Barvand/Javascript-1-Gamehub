@@ -4,10 +4,11 @@ import { getExistingGames } from "./utils.js";
 
 const games = getExistingGames();
 
+export const cartContainer = document.querySelector(".container-item-price");
 
 export function renderHtmlCart() {
   
-  const cartContainer = document.querySelector(".container-item-price");
+  
   cartContainer.innerHTML = ""; 
   const totalContainer = document.querySelector(".total-container");
 

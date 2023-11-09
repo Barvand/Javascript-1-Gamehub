@@ -4,7 +4,7 @@ import { getExistingGames } from "./utils.js";
 const data = await fetchApi();
 
 
-const resultsContainer = document.querySelector(".container-productpage")
+export const resultsContainer = document.querySelector(".container-productpage")
 
 export async function renderProductPage(data) { 
     resultsContainer.innerHTML = ""; 

@@ -2,7 +2,7 @@ import { fetchApi } from "../fetch.js";
 import { handleClick } from "./games.js";
 
 
-let productContainer = document.querySelector(".gaming-container");
+export const productContainer = document.querySelector(".gaming-container");
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString); 
@@ -56,7 +56,7 @@ export async function displayContent() {
         function createPrice(details) {
             const elementPrice = document.createElement("p");
             elementPrice.classList.add("product-price"); 
-            elementPrice.innerText = `$${details.price}`; 
+            elementPrice.innerText = `${details.price}`; 
             productContainer.appendChild(elementPrice);
             return elementPrice; 
         }
