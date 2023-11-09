@@ -13,19 +13,18 @@ async function displayCorrectFunction() {
     const data = await fetchApi();
     const url = window.location.href;
 
-    if (url.includes("index")) {
+    if (!url.includes("games-page") && !url.includes("product-page") && !url.includes("cart")) {
         renderHTML(data);
         randomImage(data);
-        setInterval(() => randomImage(data), 4000)
+        setInterval(() => randomImage(data), 4000);
     } else if (url.includes("games-page")) {
-        renderProductPage(data)
+        renderProductPage(data);
     } else if (url.includes("product-page")) {
         displayContent();
-    } else if (url.includes ("cart")) {
+    } else if (url.includes("cart")) {
         renderHtmlCart(data);
         updatePrice(); 
-    }
-}; 
+    }}
 
 displayCorrectFunction()
 
