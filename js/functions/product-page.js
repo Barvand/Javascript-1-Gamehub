@@ -56,14 +56,14 @@ export async function displayContent() {
         function createPrice(details) {
             const elementPrice = document.createElement("p");
             elementPrice.classList.add("product-price"); 
-            elementPrice.innerText = details.price; 
+            elementPrice.innerText = `$${details.price}`; 
             productContainer.appendChild(elementPrice);
             return elementPrice; 
         }
 
         
         const anchorBtn = document.createElement("a")
-         anchorBtn.classList.add("add-to-cart-btn");
+         anchorBtn.classList.add("addtocart-btn");
          anchorBtn.href = "cart.html"; 
          anchorBtn.innerText = `add to cart`; 
          anchorBtn.setAttribute("data-id", details.id);
@@ -74,8 +74,15 @@ export async function displayContent() {
 
          function cartBtn() { 
             anchorBtn.addEventListener("click", handleClick); 
-    
         }
+
+
+        const cartButton = document.createElement("a")
+        cartButton.classList.add("checkout-btn");
+        cartButton.href = "cart.html"; 
+        cartButton.innerText = `TO CHECKOUT`; 
+        productContainer.appendChild(cartButton); 
+
         cartBtn()
         
 

@@ -15,7 +15,6 @@ export async function renderProductPage(data) {
 
      const elementDiv = document.createElement("div"); 
      elementDiv.classList.add("item-product-page"); 
-    //  elementDiv.href = "product-page.html?id=" + product.id; 
      resultsContainer.appendChild(elementDiv);
 
      const imageElement = document.createElement("img"); 
@@ -54,7 +53,7 @@ export async function renderProductPage(data) {
     
     const anchorBtn = document.createElement("a")
     anchorBtn.classList.add("add-to-cart-btn");
-    anchorBtn.href = "cart.html"; 
+    
     anchorBtn.innerText = `add to cart`; 
     anchorBtn.setAttribute("data-id", product.id);
     anchorBtn.setAttribute("data-title", product.title);
@@ -71,9 +70,12 @@ export async function renderProductPage(data) {
     function cartBtn() { 
         anchorBtn.addEventListener("click", handleClick); 
     }
-    cartBtn()
-}}
 
+
+
+    cartBtn()
+    
+}}
 
 export function handleClick() { 
     const id = this.dataset.id;
@@ -91,31 +93,13 @@ if (!gameExists) {
     const game = {id: id, title: title, image: image, price: price}; 
     currentGames.push(game)
     saveGames(currentGames)
+    confirm(`${game.title} added to cart`)
 } else { 
-    const newGames = currentGames.filter(game => game.id !== id);
-    saveGames(newGames); 
+    alert(`Item already added to the cart`);
 }}
 
 
 function saveGames(games) { 
     localStorage.setItem("games", JSON.stringify(games)); 
-
 }
 
-
-
-
-//     for(let i = 0; i <data.length; i++) {
-
-//         let price = data[i].price;
-//         let discountPrice = data[i].discountedPrice; 
-//         const oldPrice = (Math.round(data[i].price + data[i].discountedPrice)); 
-
-
-//     if (data[i].onSale === true) {
-//         resultsContainer.innerHTML += `<div><img class="Game-cover-img" src=${data[i].image}><img><p>${data[i].title}</p> <p> <span class="new-price"> Was ${oldPrice} </span> Now ${data[i].price} </p> <a class="add-to-cart-btn" href="product-page.html?id=${data[i].id}"> View product </a> <a class="add-to-cart-btn" href="product-page.html?id=${data[i].id}"> add to cart </a > </div>`;
-//     } else {
-//     resultsContainer.innerHTML += `<div><img class="Game-cover-img" src=${data[i].image}><img><p>${data[i].title}</p> <p>${data[i].price}</p> <a class="add-to-cart-btn" href="product-page.html?id=${data[i].id}"> View product </a> <a class="add-to-cart-btn" href="product-page.html?id=${data[i].id}"> add to cart </a > </div>`;
-//     }
-
-// }}; 

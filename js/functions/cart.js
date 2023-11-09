@@ -1,29 +1,29 @@
+import { data } from "./index.js";
 import { getExistingGames } from "./utils.js";
-import { fetchApi } from "../fetch.js";
 
-
-const details = await fetchApi(); 
-
-const cartContainer = document.querySelector(".container-item-price"); // Create a container for the cart items
-const totalContainer = document.querySelector(".total-container");
 
 const games = getExistingGames();
 
-cartContainer.innerHTML = ""; 
 
-if (games.length === 0) {
-  totalContainer.innerHTML = "";
-  cartContainer.innerHTML = "<h1> Cart is empty, get back to shopping!</h1>";
-} else {
-  games.forEach((game) => {
-    renderHtmlCart(game);
-    
-  });
-}
-updatePrice(); 
+export function renderHtmlCart() {
+  
+  const cartContainer = document.querySelector(".container-item-price");
+  cartContainer.innerHTML = ""; 
+  const totalContainer = document.querySelector(".total-container");
 
 
-function renderHtmlCart(game) {
+  if (games.length === 0) {
+    totalContainer.innerHTML = "";
+    cartContainer.innerHTML = "<h1> Cart is empty, get back to shopping!</h1>";
+  } else {
+    games.forEach((game) => {
+      rendercartItem(game);
+      
+    });
+  }
+
+  function rendercartItem(game) { 
+
   const cartItem = document.createElement("div");
   cartItem.classList.add("Cart-item");
 
@@ -68,26 +68,14 @@ function renderHtmlCart(game) {
 
   cartContainer.appendChild(cartItem);
 
-  // Add event listeners for the interactive icons (minus, plus, and remove)
-  iconElementMinus.addEventListener("click", () => {
-    // Handle quantity decrease
-    // Update the item's quantity
-  });
-
-  iconElementPlus.addEventListener("click", () => {
-    // Handle quantity increase
-    // Update the item's quantity
-  });
-
-  removeIcon.addEventListener("click", () => {
-    // Assuming the item has an ID associated with it, let's say 'itemId'
-    const itemId = game.id;
   
-    // Remove the item from the cart (DOM)
-    const itemToRemove = document.querySelector(".Cart-item");
-    if (itemToRemove) {
-      itemToRemove.remove(); // Remove the div element from the DOM
-    }
+  removeIcon.addEventListener("click", () => {
+    const clickedItem = event.target.closest(".Cart-item"); 
+
+    if (clickedItem) { 
+    const itemId = game.id;
+    clickedItem.remove(); // Remove the div element from the DOM
+    
   
     // Remove the item from localStorage
     const cartItems = JSON.parse(localStorage.getItem("games")) || [];
@@ -99,11 +87,14 @@ function renderHtmlCart(game) {
       totalContainer.innerHTML = ""; 
       cartContainer.innerHTML = "<h1>Your cart is empty. Continue shopping</h1>";
     }
-    
-  });
-}
+  }}
+  ); 
+}} 
 
-function updatePrice() { 
+
+
+
+export function updatePrice() { 
   const shippingPrice = document.querySelector(".shipping-price");
   const cartPrice = document.querySelector(".update-price");
   const totalPriceContainer = document.querySelector(".update-total-price");

@@ -3,6 +3,9 @@ import { renderProductPage } from "./functions/games.js";
 import { renderHTML } from "/js/functions/index.js";
 import { displayContent } from "./functions/product-page.js";
 import { randomImage } from "./functions/index.js";
+import { updatePrice } from "./functions/cart.js";
+import { renderHtmlCart } from "./functions/cart.js";
+import { CartReturnButton, ProductPageReturnButton } from "./functions/eventListeners.js";
 
 let data = await fetchApi(); 
 
@@ -22,10 +25,14 @@ function displayCorrectFunction() {
     } else if (url.includes("product-page")) {
         displayContent();
     } else if (url.includes ("cart")) {
-    }
-}
+        renderHtmlCart(data);
+        updatePrice(); 
+    }} 
 
 displayCorrectFunction(data)
 
 
-// cart button function
+
+// return BTN for product page and cart
+CartReturnButton()
+ProductPageReturnButton()
