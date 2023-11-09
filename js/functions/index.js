@@ -1,15 +1,5 @@
-import { fetchApi } from "../fetch.js";
+const gridContainer = document.querySelector(".grid-item8-container");
 
-export const data = await fetchApi();
-
-export const gridContainer = document.querySelector(".grid-item8-container");
-
-const queryString = document.location.search;
-
-const params = new URLSearchParams(queryString);
-const id = params.get("id");
-
-const url = "https://api.noroff.dev/api/v1/gamehub/" + id;
 
 /// functions index page
 

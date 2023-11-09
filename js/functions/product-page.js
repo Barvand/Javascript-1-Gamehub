@@ -1,33 +1,32 @@
-import { fetchApi } from "../fetch.js";
+
 import { handleClick } from "./games.js";
 
 
-export const productContainer = document.querySelector(".gaming-container");
+const productContainer = document.querySelector(".gaming-container");
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString); 
 const id = params.get("id")
 const url = "https://api.noroff.dev/api/v1/gamehub/" + id; 
 
-const response = await fetch(url);
-const details = await response.json(); 
-
 export async function displayContent() {
-   
-   
-    productContainer.innerHTML = ""; 
 
-        // createProductPage(details)
+    try { 
+        const response = await fetch(url);
+        if (!response.ok) { 
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const details = await response.json(); 
+   
+        productContainer.innerHTML = ""; 
+
         createImage(details)
         createTitle(details)
         createDescription(details)
         createPrice(details)
         
         
-        
-        
-
-
      function createImage(details) {
         const imageElement = document.createElement("img");
         imageElement.classList.add("product-image"); 
@@ -84,11 +83,14 @@ export async function displayContent() {
         productContainer.appendChild(cartButton); 
 
         cartBtn()
-        
-
-
-
+    } catch (error) {
+        console.error('Error in displayContent:', error);
+        productContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+        const vanishBackBtn = document.querySelector(".container-back"); 
+        vanishBackBtn.innerHTML = ""; 
+}
     }
+
 
 
 

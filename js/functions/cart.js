@@ -2,11 +2,17 @@ import { getExistingGames } from "./utils.js";
 
 
 const games = getExistingGames();
+const url = "https://api.noroff.dev/api/v1/gamehub/"
 
 export const cartContainer = document.querySelector(".container-item-price");
 
-export function renderHtmlCart() {
-  
+export async function renderHtmlCart() {
+
+  try { 
+    const response = await fetch(url);
+    if (!response.ok) { 
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
   
   cartContainer.innerHTML = ""; 
   const totalContainer = document.querySelector(".total-container");
@@ -89,7 +95,12 @@ export function renderHtmlCart() {
     }
   }}
   ); 
-}} 
+  
+}} catch (error) {
+    console.error('Error in displayContent:', error);
+    cartContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+}}; 
+ 
 
 
 

@@ -9,6 +9,8 @@
   #h1-cart {
     margin-top: 50px;
     border-bottom: 4px solid #fea621;
+    display: flex;
+    justify-content: flex-start;
   }
   .Cart-item {
     display: flex;

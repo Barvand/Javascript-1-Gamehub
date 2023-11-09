@@ -1,12 +1,17 @@
-import { fetchApi } from "../fetch.js";
 import { getExistingGames } from "./utils.js";
 
-const data = await fetchApi();
+const resultsContainer = document.querySelector(".container-productpage")
+const errorContainer = document.querySelector(".container-wrapper")
 
-
-export const resultsContainer = document.querySelector(".container-productpage")
+const url = "https://api.noroff.dev/api/v1/gamehub"; 
 
 export async function renderProductPage(data) { 
+
+    try { 
+        const response = await fetch(url);
+        if (!response.ok) { 
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
     resultsContainer.innerHTML = ""; 
 
     for(let i = 0; i <data.length; i++) { 
@@ -70,12 +75,15 @@ export async function renderProductPage(data) {
     function cartBtn() { 
         anchorBtn.addEventListener("click", handleClick); 
     }
-
-
-
     cartBtn()
+    }
     
-}}
+} catch (error) {
+        console.error('Error in displayContent:', error);
+        errorContainer.innerHTML = `<div class="error-message"> Oops!! Something went wrong and it is our fault </div>`;
+}
+};
+
 
 export function handleClick() { 
     const id = this.dataset.id;
