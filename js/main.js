@@ -5,36 +5,40 @@ import { displayContent } from "./functions/product-page.js";
 import { randomImage } from "./functions/index.js";
 import { updatePrice } from "./functions/cart.js";
 import { renderHtmlCart } from "./functions/cart.js";
-import { CartReturnButton, ProductPageReturnButton } from "./functions/eventListeners.js";
+import {
+  CartReturnButton,
+  ProductPageReturnButton,
+} from "./functions/eventListeners.js";
 
-
-// this connects all functions to the API and renders the correct HTML.  
+// this connects all functions to the API and renders the correct HTML.
 async function displayCorrectFunction() {
-    try {
-        const data = await fetchApi();
-        const url = window.location.href;
+  try {
+    const data = await fetchApi();
+    const url = window.location.href;
 
-        if (!url.includes("games-page") && !url.includes("product-page") && !url.includes("cart")) {
-            renderHTML(data);
-            randomImage(data);
-            setInterval(() => randomImage(data), 4000);
-        } else if (url.includes("games-page")) {
-            renderProductPage(data);
-        } else if (url.includes("product-page")) {
-            displayContent();
-        } else if (url.includes("cart")) {
-            renderHtmlCart(data);
-            updatePrice(); 
-        }
-    } catch (error) {
-        console.error('Error in displayCorrectFunction:', error);
-        }
+    if (
+      !url.includes("games-page") &&
+      !url.includes("product-page") &&
+      !url.includes("cart")
+    ) {
+      renderHTML(data);
+      randomImage(data);
+      setInterval(() => randomImage(data), 4000);
+    } else if (url.includes("games-page")) {
+      renderProductPage(data);
+    } else if (url.includes("product-page")) {
+      displayContent();
+    } else if (url.includes("cart")) {
+      renderHtmlCart(data);
+      updatePrice();
     }
+  } catch (error) {
+    console.error("Error in displayCorrectFunction:", error);
+  }
+}
 
 displayCorrectFunction();
 
-
-
-// return BTN for product page and cart
-CartReturnButton()
-ProductPageReturnButton()
+// addEventListeners for a return to previous page button, product-page and Cart 
+CartReturnButton();
+ProductPageReturnButton();

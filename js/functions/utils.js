@@ -1,10 +1,9 @@
-export function getExistingGames() { 
+export function getExistingGames() {
+  const games = localStorage.getItem("games");
 
-    const games = localStorage.getItem("games"); 
- 
-   if (!games) { 
-     return []; 
- } else { 
-     return JSON.parse(games); 
-   }
- }
+  if (!games) {
+    return [];
+  } else {
+    return JSON.parse(games);
+  }
+}

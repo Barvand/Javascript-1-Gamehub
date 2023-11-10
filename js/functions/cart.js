@@ -7,7 +7,6 @@ const url = "https://api.noroff.dev/api/v1/gamehub/"
 export const cartContainer = document.querySelector(".container-item-price");
 
 export async function renderHtmlCart() {
-
   try { 
     const response = await fetch(url);
     if (!response.ok) { 
@@ -52,11 +51,13 @@ export async function renderHtmlCart() {
   const iconDiv = document.createElement("div");
   iconDiv.classList.add("quantity");
   cartItem.appendChild(iconDiv);
-
+  
+ // icons 
   const iconElementMinus = document.createElement("i");
   iconElementMinus.classList.add("fa-solid", "fa-minus");
   iconDiv.appendChild(iconElementMinus);
 
+  // input
   const inputElement = document.createElement("input");
   inputElement.id = ("product-quantity");
   inputElement.type = "tel";
@@ -64,6 +65,7 @@ export async function renderHtmlCart() {
   inputElement.readOnly = true;
   iconDiv.appendChild(inputElement);
 
+  // icons 
   const iconElementPlus = document.createElement("i");
   iconElementPlus.classList.add("fa-solid", "fa-plus");
   iconDiv.appendChild(iconElementPlus);
@@ -89,7 +91,7 @@ export async function renderHtmlCart() {
     localStorage.setItem("games", JSON.stringify(updatedCart));
 
     if (updatedCart.length === 0) {
-      // The cart is empty, so you can update the page, e.g., display a message or show a "Continue Shopping" button.
+      // Empty cart message
       totalContainer.innerHTML = ""; 
       cartContainer.innerHTML = "<h1>Your cart is empty. Continue shopping</h1>";
     }
