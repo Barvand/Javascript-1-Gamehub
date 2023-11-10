@@ -55,7 +55,6 @@ export async function renderProductPage(data) {
 
       const anchorBtn = document.createElement("a");
       anchorBtn.classList.add("add-to-cart-btn");
-
       anchorBtn.innerText = `add to cart`;
       anchorBtn.setAttribute("data-id", product.id);
       anchorBtn.setAttribute("data-title", product.title);
@@ -80,7 +79,7 @@ export async function renderProductPage(data) {
   }
 }
 
-// function that creates array for products with datset defined and saves them in local storage. 
+// function that creates array for products with datset defined and saves them in local storage.
 export function handleClick() {
   const id = this.dataset.id;
   const title = this.dataset.title;
