@@ -214,7 +214,7 @@
   
   /* Homepage */
   .grid-container-homepage {
-    width: 1000px;
+    width: 100%;
     margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -732,11 +732,6 @@
       width: 100%;
     }
   
-    .grid-item {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-    }
   
     .grid-item-1 {
       background-size: cover;
@@ -833,49 +828,16 @@
     }
   
     .grid-item8-container {
-      margin-top: 0;
-      width: 100%;
+      width: 90%;
       margin: auto;
-      grid-template-columns: 0.33fr 0.33fr 0.33fr;
+     
+
       
     }
   
-    .item-8 {
-      margin: auto;
-      padding-bottom: 20px;
-      width: 100%;
-    }
+    
   
-  
-    .grid-container-homepage-2 {
-      width: 100%;
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .review-coins-item9 {
-      width: 100%;
-      height: 100%;
-      grid-column: 1 / 5;
-      text-align: center;
-    }
-  
-    .forum-item10 {
-      width: 100%;
-      height: 100%;
-      grid-row: 2;
-      grid-column: 1 / 5;
-      text-align: center;
-    }
-  
-    .coin-btn {
-      margin: 0px;
-      margin-bottom: 50px;
-    }
-  
-    .forum-btn {
-      margin: 0px;
-      margin-bottom: 50px;
-    }
+
   
     .Cart-item-price-container {
       grid-row: 3 / 4;
@@ -1017,10 +979,7 @@
     .p-header-marketplace {
       font-size: 16px;
     }
-  
-    .item-8 {
-      margin-bottom: 30px;
-    }
+
    
   
     .container-product-page {
