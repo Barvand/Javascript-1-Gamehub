@@ -5,6 +5,7 @@ const errorContainer = document.querySelector(".container-wrapper");
 
 const url = "https://api.noroff.dev/api/v1/gamehub";
 
+// Renders HTML on the product page
 export async function renderProductPage(data) {
   try {
     const response = await fetch(url);
@@ -53,6 +54,7 @@ export async function renderProductPage(data) {
 
       productOnSale(data);
 
+      // I addedd all the dataset to the anchorElement, to be able to retrieve the data out of Local storage array onto the cart page as the QueryString was causing problems on the actual carts page.
       const anchorBtn = document.createElement("a");
       anchorBtn.classList.add("add-to-cart-btn");
       anchorBtn.innerText = `add to cart`;
@@ -79,7 +81,7 @@ export async function renderProductPage(data) {
   }
 }
 
-// function that creates array for products with datset defined and saves them in local storage.
+// function that creates array for products with dataset defined and saves them in local storage.
 export function handleClick() {
   const id = this.dataset.id;
   const title = this.dataset.title;

@@ -7,6 +7,7 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const url = "https://api.noroff.dev/api/v1/gamehub/" + id;
 
+// function that displays HTML on the product page.
 export async function displayContent() {
   try {
     const response = await fetch(url);
@@ -56,6 +57,7 @@ export async function displayContent() {
       return elementPrice;
     }
 
+    // I addedd all the dataset to the anchorElement, to be able to retrieve the data out of Local storage array onto the cart page as the QueryString was causing problems on the actual cart page.
     const anchorBtn = document.createElement("a");
     anchorBtn.classList.add("addtocart-btn");
     anchorBtn.href = "cart.html";

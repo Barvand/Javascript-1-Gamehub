@@ -16,6 +16,7 @@ async function displayCorrectFunction() {
     const data = await fetchApi();
     const url = window.location.href;
 
+    // I organized the index page like this, as before I initialized it as if url includes INDEX and this caused some bugs and some functions not to display correctly.
     if (
       !url.includes("games-page") &&
       !url.includes("product-page") &&
@@ -39,6 +40,6 @@ async function displayCorrectFunction() {
 
 displayCorrectFunction();
 
-// addEventListeners for a return to previous page button, product-page and Cart 
+// addEventListeners for a return to previous page button, product-page and Cart
 CartReturnButton();
 ProductPageReturnButton();
